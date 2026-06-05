@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <!--  Компонент Header  -->
+    <header>
+        <div class="container">
+            <div class="header-block">
+                <div class="theme-toggle">
+                    <button class="theme-toggle__btn" id="themeSwitcher"></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--  /Header  -->
+
+    <main>
+        
+        <!--  Компонент Search  -->
+        <div class="container" style="display: flex; align-items: center; gap: 1rem;">
+            <div class="search-wrapper">
+                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.39891 3.95319e-08C5.38042 0.000145857 4.37668 0.243368 3.4711 0.709452C2.56552 1.17554 1.78426 1.85102 1.19224 2.67977C0.60022 3.50852 0.214546 4.46659 0.0672671 5.47437C-0.0800113 6.48215 0.0153602 7.51053 0.345456 8.47403C0.675551 9.43754 1.23084 10.3084 1.96516 11.0141C2.69949 11.7198 3.59165 12.2401 4.5675 12.5317C5.54335 12.8233 6.5747 12.8778 7.57584 12.6907C8.57698 12.5035 9.519 12.0801 10.3236 11.4557L14.6323 15.766C14.7825 15.916 14.9861 16.0002 15.1984 16C15.4107 15.9998 15.6142 15.9154 15.7642 15.7652C15.9142 15.6149 15.9984 15.4113 15.9983 15.199C15.9981 14.9867 15.9137 14.7832 15.7634 14.6332L11.4548 10.3245C12.1892 9.3785 12.6435 8.24539 12.7659 7.05402C12.8883 5.86264 12.674 4.66082 12.1473 3.58522C11.6206 2.50961 10.8026 1.60339 9.78641 0.969593C8.77021 0.335798 7.59655 -0.000133053 6.39891 3.95319e-08ZM1.59904 6.39982C1.59904 5.12682 2.10474 3.90595 3.00489 3.0058C3.90504 2.10565 5.1259 1.59996 6.39891 1.59996C7.67191 1.59996 8.89277 2.10565 9.79292 3.0058C10.6931 3.90595 11.1988 5.12682 11.1988 6.39982C11.1988 7.67283 10.6931 8.89369 9.79292 9.79384C8.89277 10.694 7.67191 11.1997 6.39891 11.1997C5.1259 11.1997 3.90504 10.694 3.00489 9.79384C2.10474 8.89369 1.59904 7.67283 1.59904 6.39982Z" fill="currentColor"/>
+                </svg>
+                <input type="text" placeholder="Название картины" class="search-input" id="searchInput">
+            </div>
+            <div class="filter-btn-wrapper">
+                <button id="openFilterBtn" class="filter-btn">
+                    <svg width="15.91" height="13" viewBox="0 0 15.91 13" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.2 0C13.3 0 12.7 0.5 12.5 1.2H0.6C0.2 1.2 0 1.4 0 1.8C0 2.2 0.2 2.4 0.6 2.4H12.4C12.6 3.1 13.4 3.6 14.1 3.6C15.1 3.6 15.9 2.8 15.9 1.8C16 0.8 15.1 0 14.2 0ZM14.2 2.4C13.8 2.4 13.6 2.2 13.6 1.8C13.6 1.4 13.8 1.2 14.2 1.2C14.6 1.2 14.8 1.4 14.8 1.8C14.8 2.2 14.5 2.4 14.2 2.4Z" fill="currentColor"></path>
+                        <path d="M14.2 5.90001H7.3C7 5.20001 6.4 4.70001 5.5 4.70001C4.6 4.70001 4 5.20001 3.8 5.90001H0.6C0.2 5.90001 0 6.10001 0 6.50001C0 6.90001 0.2 7.10001 0.6 7.10001H3.8C4 7.80001 4.8 8.30001 5.5 8.30001C6.2 8.30001 7 7.80001 7.3 7.10001H14.2C14.6 7.10001 14.8 6.90001 14.8 6.50001C14.8 6.10001 14.5 5.90001 14.2 5.90001ZM5.5 7.10001C5.2 7.10001 4.9 6.90001 4.9 6.50001C4.9 6.10001 5.1 5.90001 5.5 5.90001C5.9 5.90001 6.1 6.10001 6.1 6.50001C6.1 6.90001 5.9 7.10001 5.5 7.10001Z" fill="currentColor"></path>
+                        <path d="M14.2 10.6H12.2C12 9.89999 11.3 9.39999 10.5 9.39999C9.6 9.39999 9 9.89999 8.8 10.6H0.6C0.2 10.6 0 10.8 0 11.2C0 11.6 0.2 11.8 0.6 11.8H8.7C8.9 12.5 9.7 13 10.4 13C11.1 13 11.9 12.5 12.1 11.8H14.1C14.5 11.8 14.7 11.6 14.7 11.2C14.8 10.9 14.5 10.6 14.2 10.6ZM10.5 11.8C10.1 11.8 9.9 11.6 9.9 11.2C9.9 10.8 10.1 10.6 10.5 10.6C10.9 10.6 11.1 10.8 11.1 11.2C11.1 11.6 10.8 11.8 10.5 11.8Z" fill="currentColor"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!--  /Search  -->
+
+        <!--  Компонент Gallery  -->
+        <div class="container">
+            <div class="gallery" id="gallery">
+                <!--  GalleryCard 1  -->
+                <div class="art-card art-card--1">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">cascate di tivoli</p>
+                                    <p class="art-card__year">1761</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre MuseJeanum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  GalleryCard 2  -->
+                <div class="art-card art-card--2">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">Portrait of Vincent van Gogh</p>
+                                    <p class="art-card__year">1886</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">Jean-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre Museum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  GalleryCard 3  -->
+                <div class="art-card art-card--3">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">Unequal marriage</p>
+                                    <p class="art-card__year">1882</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">Jean-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre Museum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  GalleryCard 4  -->
+                <div class="art-card art-card--4">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">The happy Violinist</p>
+                                    <p class="art-card__year">1624</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">Jean-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre Museum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  GalleryCard 5  -->
+                <div class="art-card art-card--5">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">The Arcadian</p>
+                                    <p class="art-card__year">1834</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">Jean-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre Museum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  GalleryCard 6  -->
+                <div class="art-card art-card--6">
+                    <div class="art-card__footer">
+                        <div class="art-card__info">
+                            <div class="art-card__divider"></div>
+                            <div class="art-card__content">
+                                <div class="art-card__text art-card__text--default">
+                                    <p class="art-card__title">Golfo di Napoli</p>
+                                    <p class="art-card__year">1845</p>
+                                </div>
+                                <div class="art-card__text art-card__text--hover">
+                                    <p class="art-card__author">Jean-Honore Fragonard</p>
+                                    <p class="art-card__museum">Louvre Museum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-card__arrow">
+                            <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5C0 4.85268 0.0602 4.71139 0.167357 4.60722C0.274514 4.50305 0.41985 4.44452 0.571392 4.44452L14.0482 4.44452L10.4519 0.949457C10.3446 0.845154 10.2843 0.703687 10.2843 0.556179C10.2843 0.408671 10.3446 0.267204 10.4519 0.162901C10.5592 0.0585966 10.7047 0 10.8565 0C11.0082 0 11.1537 0.0585966 11.261 0.162901L15.8321 4.60672C15.8853 4.65832 15.9276 4.71962 15.9564 4.7871C15.9852 4.85459 16 4.92694 16 5C16 5.07306 15.9852 5.14541 15.9564 5.2129C15.9276 5.28038 15.8853 5.34168 15.8321 5.39328L11.261 9.8371C11.1537 9.9414 11.0082 10 10.8565 10C10.7047 10 10.5592 9.9414 10.4519 9.8371C10.3446 9.7328 10.2843 9.59133 10.2843 9.44382C10.2843 9.29631 10.3446 9.15485 10.4519 9.05054L14.0482 5.55548L0.571392 5.55548C0.41985 5.55548 0.274514 5.49695 0.167357 5.39278C0.0602 5.28861 0 5.14732 0 5Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!--  /GalleryCard  -->
+            </div>
+        </div>
+        <!--  /Gallery  -->
+
+        <!--  Компонент Pagination  -->
+        <div class="pagination">
+            <ul class="pagination__list">
+                <li class="pagination__item pagination__item--arrow pagination__item--prev">
+                    <a href="#">
+                        <svg width="7.6" height="11.8" viewBox="0 0 7.6 11.8" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.48657 0.183396C7.31171 -0.0303263 6.9967 -0.0618274 6.78298 0.113036L0.182975 5.51304C0.0669069 5.608 -0.000406265 5.75005 -0.000406265 5.90002C-0.000406265 6.04998 0.0669069 6.19203 0.182975 6.28699L6.78298 11.687C6.9967 11.8619 7.31171 11.8304 7.48657 11.6166C7.66144 11.4029 7.62994 11.0879 7.41621 10.913L1.28919 5.90002L7.41621 0.886994C7.62994 0.71213 7.66144 0.397119 7.48657 0.183396Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="pagination__item pagination__item--active"><a href="#">1</a></li>
+                <li class="pagination__item"><a href="#">2</a></li>
+                <li class="pagination__item"><a href="#">3</a></li>
+                <li class="pagination__item pagination__item--dots"><span>...</span></li>
+                <li class="pagination__item"><a href="#">9</a></li>
+                <li class="pagination__item pagination__item--arrow pagination__item--next">
+                    <a href="#">
+                        <svg width="7.6" height="11.8" viewBox="0 0 7.6 11.8" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.113036 0.183396C0.2879 -0.0303263 0.602912 -0.0618274 0.816634 0.113036L7.41663 5.51304C7.5327 5.608 7.60002 5.75005 7.60002 5.90002C7.60002 6.04998 7.5327 6.19203 7.41663 6.28699L0.816634 11.687C0.602911 11.8619 0.2879 11.8304 0.113036 11.6166C-0.0618274 11.4029 -0.0303262 11.0879 0.183396 10.913L6.31042 5.90002L0.183396 0.886994C-0.0303263 0.71213 -0.0618274 0.397119 0.113036 0.183396Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--  /Pagination  -->
+    </main>
+
+    <!--  Компонент FilterModal  -->
+    <div class="filter-modal" id="filterModal">
+        <div class="filter-modal__header">
+            <button class="filter-modal__close" id="closeFilterBtn">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.386207 14.8252C0.165517 15.049 0.165517 15.3846 0.386207 15.6084C0.606897 15.8322 0.937931 15.8322 1.15862 15.6084L7.88966 8.8951L14.731 15.8322C14.9517 16.0559 15.2828 16.0559 15.5034 15.8322C15.7241 15.6084 15.7241 15.2727 15.5034 15.049L8.66207 8.11189L15.8345 0.951049C16.0552 0.727273 16.0552 0.391608 15.8345 0.167832C15.6138 -0.0559441 15.2828 -0.0559441 15.0621 0.167832L7.88966 7.32867L0.937931 0.27972C0.717241 0.0559441 0.386207 0.0559441 0.165517 0.27972C-0.0551724 0.503497 -0.0551724 0.839161 0.165517 1.06294L7.22759 8.11189L0.386207 14.8252Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        <div class="filter-modal__content">
+            <div class="filter-group">
+                <div class="filter-group__header">
+                    <span>artist</span>
+                    <span class="filter-group__toggle"></span>
+                </div>
+                <div class="filter-group__body">
+                    <div class="select-wrap">
+                        <select class="filter-select">
+                            <option value="" disabled selected hidden>Select the artist</option>
+                            <option value="1">Claude Monet</option>
+                            <option value="2">Pablo Picasso</option>
+                            <option value="3">Escobare Pablo</option>
+                            <option value="4">Mintein Reli</option>
+                            <option value="5">Sinesi Monesi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-group__header">
+                    <span>location</span>
+                    <span class="filter-group__toggle"></span>
+                </div>
+                <div class="filter-group__body">
+                    <div class="select-wrap">
+                        <select class="filter-select">
+                            <option value="" disabled selected hidden>Select the location</option>
+                            <option value="1">Louvre Museum</option>
+                            <option value="2">Van Gogh Museum</option>
+                            <option value="3">State Tretyakov Gallery</option>
+                            <option value="4">Thyssen-Bornemisza National Museum</option>
+                            <option value="5">New York Historical Society Museum</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-group__header">
+                    <span>years</span>
+                    <span class="filter-group__toggle"></span>
+                </div>
+                <div class="filter-group__body">
+                    <div class="year-inputs">
+                        <input type="number" placeholder="From" class="year-input">
+                        <span class="year-dash">
+                            <svg width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.7 1.4H15.4C15.6 1.4 15.7 1.3 15.9 1.2C15.9 1 16 0.9 16 0.7C16 0.5 15.9 0.4 15.8 0.2C15.7 0.0999998 15.5 0 15.3 0H8.7H7.3H0.7C0.5 0 0.4 0.0999998 0.2 0.2C0.1 0.4 0 0.5 0 0.7C0 0.9 0.1 1 0.2 1.2C0.3 1.3 0.5 1.4 0.7 1.4H7.4H8.7Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <input type="number" placeholder="To" class="year-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter-modal__footer">
+            <span class="filter-modal__result" id="showResults">show the results</span>
+            <span class="filter-modal__clear" id="clearFilters">clear</span>
+        </div>
+    </div>
+    <!--  /FilterModal  -->
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
