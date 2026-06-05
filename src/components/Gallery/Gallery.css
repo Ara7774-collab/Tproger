@@ -1,0 +1,340 @@
+.gallery {
+  display: grid;
+  gap: clamp(20px, 4vw, 32px);
+  margin: 2rem auto;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery {
+    gap: 1rem;
+  }
+}
+
+.gallery-empty {
+  text-align: center;
+  padding: 3rem;
+  font-family: 'Inter', sans-serif;
+  color: #575757;
+}
+
+.art-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 392 / 260;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  background: #DEDEDE;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .art-card {
+    aspect-ratio: 352 / 220;
+  }
+}
+
+@media (max-width: 767px) {
+  .art-card {
+    aspect-ratio: 280 / 185;
+  }
+}
+
+.art-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.art-card:hover .art-card__image {
+  transform: scale(1.05);
+}
+
+.art-card:hover .art-card__text--default {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+
+.art-card:hover .art-card__text--hover {
+  transform: translate(0, -50%);
+}
+
+.art-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+  z-index: 0;
+}
+
+.art-card__footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-top: auto;
+  width: 100%;
+}
+
+.art-card__info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 80%;
+  min-height: clamp(45px, 10vh, 82px);
+  background-color: #ffffff;
+  border-radius: 0 8px 0 0;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .art-card__info {
+    max-width: 85%;
+    min-height: clamp(38px, 8vh, 66px);
+  }
+}
+
+@media (max-width: 767px) {
+  .art-card__info {
+    max-width: 90%;
+    min-height: clamp(28px, 7vh, 45px);
+  }
+}
+
+.art-card__divider {
+  width: 0;
+  height: 60%;
+  border-left: 2px solid #9B4B4B;
+}
+
+@media (max-width: 1023px) {
+  .art-card__divider {
+    display: none;
+  }
+}
+
+.art-card__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  padding-left: clamp(12px, 3vw, 20px);
+}
+
+.art-card__text {
+  text-transform: uppercase;
+  line-height: 1.3;
+  transition: all 0.4s ease-in-out;
+}
+
+.art-card__text--default {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.art-card__text--hover {
+  position: absolute;
+  top: 50%;
+  left: clamp(12px, 3vw, 20px);
+  width: calc(100% - clamp(12px, 3vw, 20px));
+  transform: translate(-100%, -50%);
+}
+
+.art-card__title {
+  color: #121212;
+  font-family: 'CormorantSC', serif;
+  font-size: clamp(12px, 2.5vw, 16px);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-card__year {
+  margin-top: clamp(4px, 1.5vw, 8px);
+  color: #9B4B4B;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(8px, 2vw, 12px);
+  font-weight: 700;
+}
+
+.art-card__text--hover .art-card__author {
+  color: #121212;
+  font-family: 'CormorantSC', serif;
+  font-size: clamp(12px, 2.5vw, 16px);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-card__text--hover .art-card__museum {
+  margin-top: clamp(4px, 1.5vw, 8px);
+  color: #9B4B4B;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(8px, 2vw, 12px);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-card__arrow {
+  display: none;
+  width: clamp(20px, 4vw, 24px);
+  background-color: #9B4B4B;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .art-card__arrow {
+    display: flex;
+  }
+}
+
+.art-card__arrow svg {
+  width: clamp(16px, 3vw, 20px);
+  height: clamp(16px, 3vw, 20px);
+  color: #DEDEDE;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 0.75rem;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: clamp(4px, 1vw, 8px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(28px, 5vw, 32px);
+  height: clamp(28px, 5vw, 32px);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.pagination__item a,
+.pagination__item span {
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 300;
+  color: #575757;
+  padding: 0 4px;
+}
+
+.pagination__item--active {
+  background-color: rgba(18, 18, 18, 0.05);
+}
+
+.pagination__item--active a {
+  font-weight: 600;
+}
+
+.pagination__item--arrow svg {
+  width: clamp(16px, 3vw, 20px);
+  height: clamp(16px, 3vw, 20px);
+  color: #575757;
+}
+
+.pagination__item--prev {
+  margin-right: clamp(8px, 2vw, 20px);
+}
+
+.pagination__item--next {
+  margin-left: clamp(8px, 2vw, 20px);
+}
+
+.pagination__item--dots a,
+.pagination__item--dots span {
+  font-weight: 500;
+}
+
+.pagination__item.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+// Dark theme
+body.dark .art-card {
+  background: #1A1818;
+}
+
+body.dark .art-card__info {
+  background-color: #121212;
+}
+
+body.dark .art-card__divider {
+  border-color: #AB8956;
+}
+
+body.dark .art-card__title {
+  color: #DEDEDE;
+}
+
+body.dark .art-card__year {
+  color: #AB8956;
+}
+
+body.dark .art-card__text--hover .art-card__author {
+  color: #ffffff;
+}
+
+body.dark .art-card__text--hover .art-card__museum {
+  color: #AB8956;
+}
+
+body.dark .art-card__arrow {
+  background-color: #AB8956;
+}
+
+body.dark .art-card__arrow svg {
+  color: #DEDEDE;
+}
+
+body.dark .pagination__item a,
+body.dark .pagination__item span {
+  color: #DEDEDE;
+}
+
+body.dark .pagination__item--active {
+  background-color: #1A1818;
+}
+
+body.dark .pagination__item--arrow svg {
+  color: #DEDEDE;
+}

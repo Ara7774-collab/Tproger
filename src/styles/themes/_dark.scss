@@ -1,0 +1,197 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+body.dark {
+    background-color: $black;
+
+    header {
+        background-color: $black;        // ← фон в тёмной теме
+    }
+
+    .theme-toggle {
+        background-color: $bg-dark;
+    }
+
+    .theme-toggle__btn::before {
+        background-image: url("../../assets/images/icons/theme-light.svg");  // ← путь исправлен
+    }
+
+    .search-wrapper {
+        svg {
+            color: $gray-light;
+        }
+
+        .search-input {
+            background-color: $bg-dark;
+            border-color: $bg-dark;
+            caret-color: $gray-light;
+
+            &::placeholder {
+                color: $gray-dark;
+            }
+
+            &:focus {
+                border-color: $gray-light;
+            }
+        }
+    }
+
+    .filter-btn {
+        background-color: $bg-dark;
+
+        svg {
+            color: $gray-light;
+        }
+
+        @include hover {
+            background-color: rgba(205, 205, 205, 0.05);
+        }
+    }
+
+    .gallery {
+        .art-card__info {
+            background-color: $black;
+        }
+
+        .art-card__divider {
+            border-color: $accent-gold;
+        }
+
+        .art-card__title {
+            color: $gray-light;
+        }
+
+        .art-card__year {
+            color: $accent-gold;
+        }
+
+        .art-card__text--hover {
+            .art-card__author {
+                color: $white;
+            }
+
+            .art-card__museum {
+                color: $accent-gold;
+            }
+        }
+
+        .art-card__arrow {
+            background-color: $accent-gold;
+
+            svg {
+                color: $gray-light;
+            }
+        }
+    }
+
+    .pagination {
+        .pagination__item {
+            @include hover {
+                &:not(.pagination__item--arrow, .pagination__item--dots, .pagination__item--active) {
+                    background-color: rgba(255, 255, 255, 0.05);
+                }
+            }
+
+            a, span {
+                color: $gray-light;
+            }
+        }
+
+        .pagination__item--active {
+            background-color: $bg-dark;
+        }
+
+        .pagination__item--arrow {
+            svg {
+                color: $gray-light;
+            }
+
+            @include hover {
+                background-color: $bg-dark;
+
+                svg {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .filter-modal {
+        background-color: $black;
+
+        .filter-modal__close {
+            @include hover {
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
+            svg {
+                color: $gray-light;
+            }
+        }
+
+        .filter-group {
+            border-color: $gray-dark;
+
+            .filter-group__header span {
+                color: $gray-light;
+            }
+
+            .filter-group__toggle::before {
+                filter: brightness(0) saturate(100%) invert(80%) sepia(0%) saturate(0%) hue-rotate(256deg) brightness(110%) contrast(98%);
+            }
+        }
+
+        .filter-modal__result {
+            color: $gray-light;
+
+            @include hover {
+                color: $white;
+            }
+        }
+
+        .filter-modal__clear {
+            color: $gray-dark;
+
+            @include hover {
+                color: $gray-light;
+            }
+        }
+
+        .filter-select {
+            background-color: $bg-dark;
+            border-color: $bg-dark;
+            color: $gray-light;
+
+            &:focus {
+                border-color: $gray-light;
+            }
+
+            option {
+                background-color: $bg-dark;
+                color: $gray-light;
+            }
+
+            &:has(option:checked[disabled]) {
+                color: $gray-dark;
+            }
+        }
+
+        .year-input {
+            background-color: $bg-dark;
+            border-color: $bg-dark;
+            color: $gray-light;
+
+            &::placeholder {
+                color: $gray-dark;
+            }
+
+            &:focus {
+                border-color: $gray-light;
+            }
+        }
+
+        .year-dash svg {
+            color: $gray-dark;
+        }
+    }
+}

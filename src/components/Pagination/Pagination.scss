@@ -1,0 +1,87 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-xl;
+    overflow-x: auto;
+    padding: $spacing-sm;
+}
+
+.pagination__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: clamp(4px, 1vw, 8px);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(28px, 5vw, 32px);
+    height: clamp(28px, 5vw, 32px);
+    border-radius: 4px;
+    transition: all $transition-fast;
+
+    @include hover {
+        &:not(.pagination__item--arrow, .pagination__item--dots, .pagination__item--active) {
+            background-color: rgba(18, 18, 18, 0.05);
+
+            a, span {
+                font-weight: 500;
+            }
+        }
+    }
+
+    a, span {
+        text-decoration: none;
+        font-family: $font-inter;
+        font-size: clamp(12px, 2vw, 14px);
+        font-weight: 300;
+        color: $gray-dark;
+        padding: 0 4px;
+    }
+}
+
+.pagination__item--active {
+    background-color: rgba(18, 18, 18, 0.05);
+
+    a {
+        font-weight: 600;
+    }
+}
+
+.pagination__item--arrow {
+    svg {
+        width: clamp(16px, 3vw, 20px);
+        height: clamp(16px, 3vw, 20px);
+        color: $gray-dark;
+    }
+
+    @include hover {
+        background-color: rgba(18, 18, 18, 0.05);
+
+        svg {
+            color: $black;
+        }
+    }
+}
+
+.pagination__item--prev {
+    margin-right: clamp(8px, 2vw, 20px);
+}
+
+.pagination__item--next {
+    margin-left: clamp(8px, 2vw, 20px);
+}
+
+.pagination__item--dots {
+    a, span {
+        font-weight: 500;
+    }
+}

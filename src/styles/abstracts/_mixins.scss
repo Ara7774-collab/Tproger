@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+// Mobile-first миксины
+@mixin mobile-sm {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: #{$breakpoint-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: $breakpoint-lg) and (max-width: #{$breakpoint-xl - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $breakpoint-xl) and (max-width: #{$breakpoint-xxl - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop-wide {
+    @media (min-width: $breakpoint-xxl) {
+        @content;
+    }
+}
+
+// Адаптивный grid
+@mixin responsive-grid($min-column-width: 250px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min($min-column-width, 100%), 1fr));
+    gap: $spacing-lg;
+}
+
+// Адаптивный шрифт
+@mixin fluid-font($min-size, $max-size, $min-width: 320px, $max-width: 1440px) {
+    font-size: clamp(#{$min-size}, #{$min-size} + (($max-size - $min-size) * ((100vw - #{$min-width}) / (#{$max-width} - #{$min-width}))), #{$max-size});
+}
+
+// Адаптивный отступ
+@mixin fluid-padding($vertical, $horizontal) {
+    padding: clamp(#{$vertical * 0.5}rem, #{$vertical}vw, #{$vertical}rem) clamp(#{$horizontal * 0.5}rem, #{$horizontal}vw, #{$horizontal}rem);
+}
+
+// Hover эффекты только для устройств с мышкой
+@mixin hover {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
