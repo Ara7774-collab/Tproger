@@ -1,0 +1,37 @@
+// Цветовая схема
+$white: #ffffff;
+$black: #121212;
+$gray-light: #DEDEDE;
+$gray-dark: #575757;
+$gray-medium: #9C9C9C;
+$bg-light: #FCFCFC;
+$bg-dark: #1A1818;
+$accent-red: #9B4B4B;
+$accent-gold: #AB8956;
+
+// Шрифты
+$font-cormorant: "CormorantSC", serif;
+$font-inter: "Inter", sans-serif;
+
+// Брейкпоинты (mobile-first)
+$breakpoint-sm: 576px;   
+$breakpoint-md: 768px;   
+$breakpoint-lg: 1024px;  
+$breakpoint-xl: 1280px;  
+$breakpoint-xxl: 1440px; 
+
+// Отступы 
+$spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+$spacing-sm: clamp(0.75rem, 2vw, 1rem);
+$spacing-md: clamp(1rem, 3vw, 1.5rem);
+$spacing-lg: clamp(1.5rem, 4vw, 2rem);
+$spacing-xl: clamp(2rem, 5vw, 3rem);
+
+// Трансформации
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.4s ease-in-out;
+
+// Контейнер
+$container-max-width: 1400px;
+$container-padding: clamp(1rem, 4vw, 2rem);
